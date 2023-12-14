@@ -8,10 +8,10 @@ const App = () => {
         <h1 className="font-bold">CRUD Application</h1>
       </header>
       <main className="flex flex-col sm:flex-row">
-        <div className="md:w-1/4 sm:w-1/3 w-full p-4 bg-gray-500">
+        <div className="lg:w-1/5 md:w-2/5 sm:w-1/2 w-full p-4 bg-gray-500">
           <UserForm />
         </div>
-        <div className="md:w-3/4 sm:w-2/3 w-full p-4 bg-gray-700">
+        <div className="lg:w-4/5 md:w-3/5 sm:w-1/2 w-full p-4 bg-gray-700">
           <UsersList />
         </div>
       </main>
