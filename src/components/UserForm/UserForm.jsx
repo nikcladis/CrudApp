@@ -3,14 +3,29 @@ import { useForm } from "react-hook-form";
 const emptyChar = "\u200B";
 
 const UserForm = () => {
+  const form = useForm({
+    defaultValues: {
+      name: "",
+      username: "",
+      email: "",
+      address: {
+        city: "",
+        zipcode: "",
+      },
+      phone: "",
+    },
+  });
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    reset: resetForm,
+  } = form;
 
   const onSubmit = (data) => {
     console.log(data);
+    resetForm();
   };
 
   return (
@@ -43,8 +58,7 @@ const UserForm = () => {
             errors.name ? "" : "invisible"
           }`}
         >
-          {errors.name?.message}
-          {emptyChar}
+          {errors.name?.message} {/* or */} {emptyChar}
         </p>
       </div>
 
@@ -72,8 +86,7 @@ const UserForm = () => {
             errors.username ? "" : "invisible"
           }`}
         >
-          {errors.username?.message}
-          {emptyChar}
+          {errors.username?.message} {/* or */} {emptyChar}
         </p>
       </div>
 
@@ -101,8 +114,7 @@ const UserForm = () => {
             errors.email ? "" : "invisible"
           }`}
         >
-          {errors.email?.message}
-          {emptyChar}
+          {errors.email?.message} {/* or */} {emptyChar}
         </p>
       </div>
 
@@ -117,20 +129,19 @@ const UserForm = () => {
             type="text"
             name="city"
             className={`w-3/4 border-2 ${
-              errors.city ? "border-red-500" : "border-gray-400"
+              errors.address?.city ? "border-red-500" : "border-gray-400"
             } px-2 py-1 rounded-md focus:outline-none focus:border-blue-500`}
-            {...register("city", {
+            {...register("address.city", {
               required: "City is required.",
             })}
           />
         </label>
         <p
           className={`text-red-500 text-sm font-semibold self-end ${
-            errors.city ? "" : "invisible"
+            errors.address?.city ? "" : "invisible"
           }`}
         >
-          {errors.city?.message}
-          {emptyChar}
+          {errors.address?.city?.message} {/* or */} {emptyChar}
         </p>
       </div>
 
@@ -145,9 +156,9 @@ const UserForm = () => {
             type="text"
             name="zipcode"
             className={`w-3/4 border-2 ${
-              errors.zipcode ? "border-red-500" : "border-gray-400"
+              errors.address?.zipcode ? "border-red-500" : "border-gray-400"
             } px-2 py-1 rounded-md focus:outline-none focus:border-blue-500`}
-            {...register("zipcode", {
+            {...register("address.zipcode", {
               required: "Zipcode must only be digits or a hyphen.",
               pattern: /^\d+$/,
             })}
@@ -155,11 +166,10 @@ const UserForm = () => {
         </label>
         <p
           className={`text-red-500 text-sm font-semibold self-end ${
-            errors.zipcode ? "" : "invisible"
+            errors.address?.zipcode ? "" : "invisible"
           }`}
         >
-          {errors.zipcode?.message}
-          {emptyChar}
+          {errors.address?.zipcode?.message} {/* or */} {emptyChar}
         </p>
       </div>
 
@@ -187,8 +197,7 @@ const UserForm = () => {
             errors.phone ? "" : "invisible"
           }`}
         >
-          {errors.phone?.message}
-          {emptyChar}
+          {errors.phone?.message} {/* or */} {emptyChar}
         </p>
       </div>
 
