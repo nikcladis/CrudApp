@@ -3,9 +3,7 @@ import { initialFormValues } from "../../constants/constants";
 import UserFormField from "./UserFormField";
 
 const UserForm = () => {
-  const form = useForm({
-    defaultValues: initialFormValues,
-  });
+  const form = useForm(initialFormValues);
 
   const {
     register,
