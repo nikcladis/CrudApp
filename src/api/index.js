@@ -7,7 +7,7 @@ const api = axios.create({
     baseURL,
 });
 
-export const fetchData = async (endpoint) => {
+const fetchData = async (endpoint) => {
     // eslint-disable-next-line no-useless-catch
     try {
         const response = await api.get(endpoint);
@@ -17,4 +17,4 @@ export const fetchData = async (endpoint) => {
     }
 };
 
-export default { fetchData, endpoints };
+export { fetchData, endpoints };
