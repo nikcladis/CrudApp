@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import UserCard from "./UserCard";
 import { fetchData, endpoints } from "../../api";
+import SearchUser from "../SearchUser/SearchUser";
 
 const UsersList = () => {
   const [usersData, setUsersData] = useState([]);
