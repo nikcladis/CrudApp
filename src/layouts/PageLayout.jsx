@@ -11,7 +11,7 @@ const PageLayout = () => {
         <div className="w-full xl:w-1/4 lg:w-2/5 md:w-1/2 p-2">
           <UserForm />
         </div>
-        <div className="w-full xl:w-3/4 lg:w-3/5 md:w-1/2 p-2 bg-gray-700">
+        <div className="w-full xl:w-3/4 lg:w-3/5 md:w-1/2 p-2">
           <UsersList />
         </div>
       </main>
