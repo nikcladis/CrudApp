@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserProvider";
+import { deleteUser } from "../../utils/deleteUser";
 import { FaTrashAlt } from "react-icons/fa";
 
 const UserCardActions = ({ userId }) => {
   const { users, setUsers } = useContext(UserContext);
 
   const handleDeleteUser = () => {
-    setUsers(users.filter((user) => user.id !== userId));
+    deleteUser(users, userId, setUsers);
   };
 
   return (
