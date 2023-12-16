@@ -9,7 +9,7 @@ const PageLayout = () => {
       <header className="px-2 py-3 text-3xl">
         <h1 className="font-bold">CRUD Application</h1>
       </header>
-      <div className="flex flex-col sm:flex-row">
+      <div className="relative flex flex-col sm:flex-row">
         <UserProvider>
           <main className="flex flex-col gap-2 w-full xl:w-3/4 lg:w-3/5 md:w-1/2 order-2">
             <div className="p-2">
@@ -19,7 +19,7 @@ const PageLayout = () => {
               <UsersList />
             </article>
           </main>
-          <aside className="w-full xl:w-1/4 lg:w-2/5 md:w-1/2 p-2 order-1">
+          <aside className="sm:sticky sm:top-2 h-1/3 w-full xl:w-1/4 lg:w-2/5 md:w-1/2 p-2 order-1">
             <UserForm />
           </aside>
         </UserProvider>
