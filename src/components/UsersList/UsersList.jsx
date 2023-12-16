@@ -1,25 +1,26 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import UserCard from "./UserCard";
+import { UserContext } from "../../contexts/UserProvider";
 import { fetchData, endpoints } from "../../api";
 
 const UsersList = () => {
-  const [usersData, setUsersData] = useState([]);
+  const { users, setUsers } = useContext(UserContext);
 
   useEffect(() => {
-    const fetchUsersData = async () => {
+    const fetchUsers = async () => {
       try {
-        const users = await fetchData(endpoints.users);
+        const usersData = await fetchData(endpoints.users);
 
-        setUsersData(users);
+        setUsers(usersData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
-    fetchUsersData();
+    console.log("done");
+    fetchUsers();
   }, []);
 
-  const showUsersList = usersData.map((user) => {
+  const showUsersList = users.map((user) => {
     return (
       <li key={user.id}>
         <UserCard {...user} />
