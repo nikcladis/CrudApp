@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserProvider";
 import { useForm } from "react-hook-form";
 import { initialFormValues } from "../../constants/constants";
+import submitNewUser from "../../utils/submitNewUser";
 import UserFormField from "./UserFormField";
 
 const UserForm = () => {
@@ -17,20 +18,7 @@ const UserForm = () => {
   } = form;
 
   const onSubmit = (data) => {
-    const newUser = {
-      id: users.length + 1,
-      name: data.name,
-      username: data.username,
-      email: data.email,
-      address: {
-        city: data.city,
-        zipcode: data.zipcode,
-      },
-      phone: data.phone,
-    };
-
-    setUsers([...users, newUser]);
-    resetForm();
+    submitNewUser(data, users, setUsers, resetForm);
   };
 
   return (
