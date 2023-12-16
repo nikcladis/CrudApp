@@ -90,7 +90,7 @@ const UserForm = () => {
         type="submit"
         className="bg-blue-700 hover:bg-blue-500 text-white font-semibold py-1.5 px-2 rounded-md transition duration-300 ease-in-out"
       >
-        Click me
+        Submit
       </button>
     </form>
   );

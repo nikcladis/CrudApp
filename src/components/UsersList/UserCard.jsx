@@ -3,6 +3,7 @@ import UserCardItem from "./UserCardItem";
 import UserCardActions from "./UserCardActions";
 
 const UserCard = ({
+  id,
   name,
   username,
   email,
@@ -25,7 +26,7 @@ const UserCard = ({
         <UserCardItem name="Zipcode" value={zipcode} />
         <UserCardItem name="Phone" value={phone} />
 
-        {isHovered && <UserCardActions />}
+        {isHovered && <UserCardActions userId={id} />}
       </ul>
     </article>
   );
