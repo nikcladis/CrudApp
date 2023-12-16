@@ -2,6 +2,7 @@ import { useEffect, useContext } from "react";
 import UserCard from "./UserCard";
 import { UserContext } from "../../contexts/UserProvider";
 import { fetchData, endpoints } from "../../api";
+import searchUser from "../../utils/searchUser";
 
 const UsersList = () => {
   const { users, setUsers, searchQuery } = useContext(UserContext);
@@ -20,20 +21,7 @@ const UsersList = () => {
     fetchUsers();
   }, []);
 
-  const showFilteredUsers = searchQuery
-    ? users.filter((user) => {
-        const lowercaseQuery = searchQuery.toLowerCase();
-
-        return (
-          user.name.toLowerCase().startsWith(lowercaseQuery) ||
-          user.username.toLowerCase().startsWith(lowercaseQuery) ||
-          user.email.toLowerCase().startsWith(lowercaseQuery) ||
-          user.address.city.toLowerCase().startsWith(lowercaseQuery) ||
-          user.address.zipcode.toString().startsWith(searchQuery) ||
-          user.phone.toString().startsWith(searchQuery)
-        );
-      })
-    : users;
+  const showFilteredUsers = searchUser(users, searchQuery);
 
   const filteredUsersList = showFilteredUsers.map((user) => (
     <li key={user.id}>
