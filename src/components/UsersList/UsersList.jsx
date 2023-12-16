@@ -4,7 +4,7 @@ import { UserContext } from "../../contexts/UserProvider";
 import { fetchData, endpoints } from "../../api";
 
 const UsersList = () => {
-  const { users, setUsers } = useContext(UserContext);
+  const { users, setUsers, searchQuery } = useContext(UserContext);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -20,17 +20,30 @@ const UsersList = () => {
     fetchUsers();
   }, []);
 
-  const showUsersList = users.map((user) => {
-    return (
-      <li key={user.id}>
-        <UserCard {...user} />
-      </li>
-    );
-  });
+  const showFilteredUsers = searchQuery
+    ? users.filter((user) => {
+        const lowercaseQuery = searchQuery.toLowerCase();
+
+        return (
+          user.name.toLowerCase().startsWith(lowercaseQuery) ||
+          user.username.toLowerCase().startsWith(lowercaseQuery) ||
+          user.email.toLowerCase().startsWith(lowercaseQuery) ||
+          user.address.city.toLowerCase().startsWith(lowercaseQuery) ||
+          user.address.zipcode.toString().startsWith(searchQuery) ||
+          user.phone.toString().startsWith(searchQuery)
+        );
+      })
+    : users;
+
+  const filteredUsersList = showFilteredUsers.map((user) => (
+    <li key={user.id}>
+      <UserCard {...user} />
+    </li>
+  ));
 
   return (
     <ul className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
-      {showUsersList}
+      {filteredUsersList}
     </ul>
   );
 };
