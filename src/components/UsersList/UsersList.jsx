@@ -17,7 +17,6 @@ const UsersList = () => {
         console.error("Error fetching data:", error);
       }
     };
-    console.log("done");
     fetchUsers();
   }, []);
 
