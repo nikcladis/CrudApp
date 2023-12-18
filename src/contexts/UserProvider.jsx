@@ -4,7 +4,7 @@ export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchFilter, setSearchFilter] = useState("all");
+  const [searchFilter, setSearchFilter] = useState("name");
   const [users, setUsers] = useState([]);
 
   const value = {
