@@ -1,4 +1,4 @@
-const searchUser = (users, searchQuery) => {
+const searchUser = (users, searchQuery, searchFilter) => {
     if (!searchQuery) {
         return users;
     }
@@ -6,14 +6,9 @@ const searchUser = (users, searchQuery) => {
     const lowercaseQuery = searchQuery.toLowerCase();
 
     return users.filter((user) => {
-        return (
-            user.name.toLowerCase().startsWith(lowercaseQuery) ||
-            user.username.toLowerCase().startsWith(lowercaseQuery) ||
-            user.email.toLowerCase().startsWith(lowercaseQuery) ||
-            user.address.city.toLowerCase().startsWith(lowercaseQuery) ||
-            user.address.zipcode.toString().startsWith(searchQuery) ||
-            user.phone.toString().startsWith(searchQuery)
-        );
+        const filterBy = user[searchFilter].toLowerCase();
+
+        return filterBy.startsWith(lowercaseQuery);
     });
 };
 

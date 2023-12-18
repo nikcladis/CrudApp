@@ -5,7 +5,8 @@ import { fetchData, endpoints } from "../../api";
 import searchUser from "../../utils/searchUser";
 
 const UsersList = () => {
-  const { users, setUsers, searchQuery } = useContext(UserContext);
+  const { users, setUsers, searchQuery, searchFilter } =
+    useContext(UserContext);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -20,7 +21,7 @@ const UsersList = () => {
     fetchUsers();
   }, []);
 
-  const showFilteredUsers = searchUser(users, searchQuery);
+  const showFilteredUsers = searchUser(users, searchQuery, searchFilter);
 
   const filteredUsersList = showFilteredUsers.map((user) => (
     <li key={user.id}>
