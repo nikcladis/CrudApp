@@ -40,7 +40,7 @@ const SearchUser = () => {
       </div>
 
       <Select
-        className="lg:w-1/3"
+        className="lg:w-1/3 w-full"
         options={sortOptions}
         isSearchable={false}
         defaultValue={sortOptions.find(
@@ -50,7 +50,7 @@ const SearchUser = () => {
       />
 
       <button
-        className="lg:w-1/3 bg-blue-700 hover:bg-blue-500 text-white font-semibold p-1.5 rounded-md transition duration-300 ease-in-out"
+        className="lg:w-1/3 w-full bg-blue-700 hover:bg-blue-500 text-white font-semibold p-1.5 rounded-md transition duration-300 ease-in-out"
         onClick={handleSort}
       >
         Sort
